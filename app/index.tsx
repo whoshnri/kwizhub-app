@@ -27,7 +27,7 @@ export default function LoginScreen() {
   // Redirect if already logged in
   React.useEffect(() => {
     if (!isLoading && user) {
-      router.replace('/(dashboard)/books');
+      router.replace('/dashboard/books');
     }
   }, [user, isLoading]);
 
@@ -45,7 +45,7 @@ export default function LoginScreen() {
     try {
       const data = await api.login(email, password);
       await signIn(data.token, data.user);
-      router.replace('/(dashboard)/books');
+      router.replace('/dashboard/books');
     } catch (e) {
       setError('Invalid credentials or network error');
     } finally {
