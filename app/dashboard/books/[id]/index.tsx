@@ -124,7 +124,7 @@ export default function BookDetailScreen() {
                     <View className="gap-3 mt-auto mb-10">
                         {isDownloaded ? (
                             <Pressable
-                                onPress={() => router.push(`/read/${id}` as any)}
+                                onPress={() => router.push(`./read` as any)}
                                 className="flex-row items-center justify-center gap-3 bg-blue-600 p-4 rounded-xl active:opacity-90 shadow-sm shadow-blue-200"
                             >
                                 <Ionicons name="book-outline" size={24} color="white" />

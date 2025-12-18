@@ -35,7 +35,7 @@ export default function BooksScreen() {
   }, []);
 
   const renderItem = ({ item }: { item: any }) => (
-    <Pressable onPress={() => router.push(`/(dashboard)/book/${item.id}` as any)}>
+    <Pressable onPress={() => router.push(`/dashboard/books/${item.id}` as any)}>
       <Card className="mb-4 border border-blue-100/10">
         <CardHeader className="flex-row items-center gap-3 pb-2 ">
           <View className="bg-blue-50 p-2 rounded-lg ">
