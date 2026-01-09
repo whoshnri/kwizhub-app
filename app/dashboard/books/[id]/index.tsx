@@ -23,10 +23,10 @@ export default function BookDetailScreen() {
     async function loadBook() {
         try {
             const allBooks = await api.getBooks();
-            console.log("Books loaded:", allBooks.length, "Target ID:", id);
+            const bookId = String(id);
+            console.log("Books loaded:", allBooks.length, "Target ID:", bookId);
 
-            // Loose comparison for ID to handle string/number differences
-            const found = allBooks.find((b: any) => String(b.id) === String(id));
+            const found = allBooks.find((b: any) => String(b.id) === bookId);
 
             if (!found) {
                 console.warn("Book not found for ID:", id);
@@ -124,11 +124,11 @@ export default function BookDetailScreen() {
                     <View className="gap-3 mt-auto mb-10">
                         {isDownloaded ? (
                             <Pressable
-                                onPress={() => router.push(`./read` as any)}
+                                onPress={() => router.push(`/dashboard/books/${book.id}/read`)}
                                 className="flex-row items-center justify-center gap-3 bg-blue-600 p-4 rounded-xl active:opacity-90 shadow-sm shadow-blue-200"
                             >
-                                <Ionicons name="book-outline" size={24} color="white" />
-                                <Text className="text-white font-bold text-lg">Read Now</Text>
+                                <Ionicons name="book-outline" size={16} color="white" />
+                                <Text className="text-white font-bold text-base">Read Now</Text>
                             </Pressable>
                         ) : (
                             <Pressable
@@ -139,9 +139,9 @@ export default function BookDetailScreen() {
                                 {processing ? (
                                     <ActivityIndicator color="white" />
                                 ) : (
-                                    <Ionicons name="download-outline" size={24} color="white" />
+                                    <Ionicons name="download-outline" size={16} color="white" />
                                 )}
-                                <Text className="text-white font-bold text-lg">
+                                <Text className="text-white font-bold text-base">
                                     {processing ? "Downloading..." : "Download to Read"}
                                 </Text>
                             </Pressable>
@@ -164,7 +164,8 @@ export default function BookDetailScreen() {
                     <Ionicons name="alert-circle-outline" size={48} color="#9ca3af" />
                     <Text className="text-muted-foreground mt-4 text-lg">Book details unavailable.</Text>
                 </View>
-            )}
-        </ScrollView>
+            )
+            }
+        </ScrollView >
     );
 }

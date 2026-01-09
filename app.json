@@ -1,11 +1,11 @@
 {
   "expo": {
     "name": ".",
-    "slug": ".",
+    "slug": "kwizkub-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": ".",
+    "scheme": "kwizhubapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.whoshnri.kwizkubapp"
     },
     "web": {
       "bundler": "metro",
@@ -33,10 +34,18 @@
     },
     "plugins": [
       "expo-router",
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "d4b9c000-803a-49aa-89a3-600b90e99ef8"
+      }
+    },
+    "owner": "whoshnri"
   }
 }

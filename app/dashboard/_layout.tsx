@@ -27,9 +27,11 @@ export default function RootLayout() {
                 height: 60,
                 borderTopLeftRadius: 24,
                 borderTopRightRadius: 24,
+                borderTopWidth: 0,
+                borderColor: "#e5e7eb",
                 paddingBottom: 10,
                 paddingTop: 6,
-                marginBottom: 12,
+                marginBottom: 10,
             },
             tabBarShowLabel: true,
             tabBarLabelStyle: {
@@ -39,9 +41,10 @@ export default function RootLayout() {
             tabBarActiveTintColor: "#2563eb", // Blue-600
             tabBarInactiveTintColor: "#9ca3af", // Gray-400
         }}>
-            <Tabs.Screen name="books" options={{
+            <Tabs.Screen name="books/index" options={{
                 title: "My Library",
                 tabBarLabel: "Library",
+                headerShown: false,
                 tabBarIcon: ({ color }) => (
                     <Ionicons name="library" color={color} size={24} />
                 ),
@@ -53,10 +56,25 @@ export default function RootLayout() {
                 )
             }} />
 
-            <Tabs.Screen name="book/[id]" options={{
+            <Tabs.Screen name="books/[id]/index" options={{
                 href: null,
                 headerShown: true,
                 title: "Book Details",
+                headerLeft: () => (
+                    <Ionicons
+                        name="arrow-back"
+                        size={24}
+                        color="#fff"
+                        style={{ marginLeft: 16 }}
+                        onPress={() => router.back()}
+                    />
+                ),
+            }} />
+
+            <Tabs.Screen name="books/[id]/read" options={{
+                href: null,
+                headerShown: true,
+                title: "Book Read",
                 headerLeft: () => (
                     <Ionicons
                         name="arrow-back"

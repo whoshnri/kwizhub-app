@@ -21,8 +21,9 @@ export default function RootLayout() {
       <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
       <AuthProvider>
         <Stack >
-          <Stack.Screen name='(dashboard)' options={{ headerShown: false }} />
+          <Stack.Screen name='dashboard' options={{ headerShown: false }} />
           <Stack.Screen name='index' options={{ headerShown: false }} />
+
           <Stack.Screen name='+not-found' />
         </Stack>
         <PortalHost />

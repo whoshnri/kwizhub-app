@@ -1,7 +1,7 @@
 import { cacheBooksData, getCachedBooksData } from './storage';
 import * as SecureStore from 'expo-secure-store';
 
-const API_ORIGIN = 'https://kwizhub.vercel.app/'; // Replace with actual API origin
+const API_ORIGIN = 'https://kwizhub.vercel.app'; // Replace with actual API origin
 const BASE_URL = `${API_ORIGIN}/api`;
 
 async function getAuthHeaders() {
@@ -24,8 +24,9 @@ export const api = {
             if (!response.ok) {
                 throw new Error('Login failed');
             }
-
+            console.log(response)
             const data = await response.json();
+            await SecureStore.setItemAsync('user_session_token', data.token);
             // Expected data: { token, user: { ... } }
             return data;
         } catch (e) {
@@ -50,11 +51,6 @@ export const api = {
 
     getBooks: async () => {
         try {
-            const cached = await getCachedBooksData();
-            console.log("Cached Data", cached);
-            if(cached){
-                return cached;
-            }
             const headers = await getAuthHeaders();
             const response = await fetch(`${BASE_URL}/books`, {
                 method: 'GET',
@@ -71,7 +67,7 @@ export const api = {
         } catch (e) {
             console.warn('Fetching books failed, falling back to cache', e);
             const cached = await getCachedBooksData();
-            return cached;
+            return cached || [];
         }
     }
 };
