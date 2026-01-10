@@ -124,6 +124,7 @@ export default function ReadScreen() {
                         size="icon"
                         onPress={() => goToPage(page - 1)}
                         disabled={page <= 1}
+                        className='rounded-full'
                     >
                         <Ionicons name="arrow-back" size={20} color={page <= 1 ? "gray" : "black"} />
                     </Button>
@@ -131,7 +132,7 @@ export default function ReadScreen() {
                     <View className="flex-row items-center gap-2">
                         <Text className="text-foreground">Page</Text>
                         <TextInput
-                            className="bg-input text-foreground border border-border rounded px-2 py-1 w-12 text-center"
+                            className="bg-input text-black border border-border rounded px-2 py-1 w-12 text-center"
                             value={inputPage}
                             onChangeText={setInputPage}
                             keyboardType="numeric"
@@ -148,6 +149,8 @@ export default function ReadScreen() {
                         size="icon"
                         onPress={() => goToPage(page + 1)}
                         disabled={page >= totalPages}
+                        className='rounded-full'
+
                     >
                         <Ionicons name="arrow-forward" size={20} color={page >= totalPages ? "gray" : "black"} />
                     </Button>
